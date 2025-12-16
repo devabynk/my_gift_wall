@@ -74,8 +74,7 @@ git clone https://github.com/yourusername/magical-moments.git
 cd magical-moments
 
 # 2. Import the database
-mysql -u root -p your_database < databasebackup.sql
-mysql -u root -p your_database < additional_gifts.sql
+mysql -u root -p your_database < database_example.sql
 
 # 3. Configure the application
 cp config.example.php config.php
@@ -106,8 +105,7 @@ FLUSH PRIVILEGES;
 Import the schema and data:
 
 ```bash
-mysql -u mm_user -p magical_moments < databasebackup.sql
-mysql -u mm_user -p magical_moments < additional_gifts.sql
+mysql -u mm_user -p magical_moments < database_example.sql
 ```
 
 #### Step 2: Application Configuration
@@ -212,8 +210,7 @@ magical-moments/
 ├── config.example.php          # Example configuration
 ├── config.php                  # Your configuration (gitignored)
 ├── create.php                  # Wall creation wizard
-├── databasebackup.sql          # Database schema and data
-├── additional_gifts.sql        # Additional gift options
+├── database_example.sql        # Database schema and sample data
 ├── index.php                   # Homepage
 ├── LICENSE                     # MIT License
 ├── README.md                   # This file
