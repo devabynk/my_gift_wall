@@ -1,0 +1,2135 @@
+/* Magical Moments - Rich Themed Wall Designs with Layered Structures */
+
+/* ============================
+   SHARED ANIMATIONS & UTILITIES
+   ============================ */
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes snow {
+    0% {
+        transform: translateY(-100vh) translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) translateX(50px);
+        opacity: 0.3;
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes sway {
+
+    0%,
+    100% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Base theme class */
+body[class*="theme-"] {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+/* ============================
+   1. CHRISTMAS & NEW YEAR THEME
+   ============================ */
+
+body.theme-christmas {
+    background: linear-gradient(180deg, #0a1929 0%, #1e3a5f 50%, #0f1419 100%);
+    position: relative;
+}
+
+/* Snow overlay */
+.christmas-snow-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 25;
+    overflow: hidden;
+}
+
+.christmas-snowflake {
+    position: absolute;
+    color: white;
+    font-size: 1rem;
+    opacity: 0.8;
+    animation: snow linear infinite;
+}
+
+/* Window with snowy view */
+.christmas-window {
+    position: absolute;
+    left: 5%;
+    top: 10%;
+    width: 25%;
+    height: 40%;
+    background: linear-gradient(135deg, #1e3a5f 0%, #2a5075 100%);
+    border: 8px solid #3d2817;
+    box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.christmas-window::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0;
+    border-right: 4px solid #3d2817;
+}
+
+.christmas-window::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    top: 0;
+    border-bottom: 4px solid #3d2817;
+}
+
+/* Fireplace */
+.christmas-fireplace {
+    position: absolute;
+    right: 8%;
+    bottom: 15%;
+    width: 30%;
+    height: 35%;
+    background: linear-gradient(to bottom, #4a2c2a 0%, #2d1a1a 100%);
+    border-radius: 8px 8px 0 0;
+    z-index: 1;
+    box-shadow: 0 0 60px rgba(255, 100, 0, 0.4);
+}
+
+.christmas-fireplace-opening {
+    position: absolute;
+    bottom: 5%;
+    left: 15%;
+    width: 70%;
+    height: 60%;
+    background: radial-gradient(circle, #ff6b00 0%, #ff4500 40%, #8b0000 100%);
+    border-radius: 8px;
+    animation: flicker 3s ease-in-out infinite;
+    box-shadow: 0 0 40px rgba(255, 100, 0, 0.8);
+}
+
+.christmas-mantel {
+    position: absolute;
+    bottom: 60%;
+    left: -5%;
+    width: 110%;
+    height: 8%;
+    background: linear-gradient(to bottom, #5d4037 0%, #3e2723 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+/* Christmas Tree */
+.christmas-tree {
+    position: absolute;
+    left: 15%;
+    bottom: 20%;
+    width: 0;
+    height: 0;
+    border-left: 20vw solid transparent;
+    border-right: 20vw solid transparent;
+    border-bottom: 45vh solid rgba(21, 87, 36, 0.9);
+    z-index: 5;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+}
+
+.christmas-tree-lights {
+    position: absolute;
+    left: 15%;
+    bottom: 20%;
+    width: 40vw;
+    height: 45vh;
+    z-index: 6;
+    pointer-events: none;
+}
+
+/* ============================
+   2. BIRTHDAY PARTY THEME
+   ============================ */
+
+body.theme-birthday {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    position: relative;
+}
+
+/* Confetti overlay */
+.birthday-confetti-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 25;
+    overflow: hidden;
+}
+
+.birthday-confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    animation: confetti-fall linear infinite;
+}
+
+/* Party table */
+.birthday-table {
+    position: absolute;
+    bottom: 20%;
+    left: 20%;
+    width: 60%;
+    height: 3%;
+    background: linear-gradient(to bottom, #f5f5f5 0%, #e0e0e0 100%);
+    border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    z-index: 8;
+}
+
+.birthday-tablecloth {
+    position: absolute;
+    bottom: 23%;
+    left: 15%;
+    width: 70%;
+    height: 30%;
+    background: linear-gradient(to bottom, #ffffff 0%, #f0f0f0 100%);
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    z-index: 7;
+}
+
+/* Cake base */
+.birthday-cake {
+    position: absolute;
+    bottom: 24%;
+    left: 42%;
+    width: 16%;
+    z-index: 9;
+}
+
+.birthday-cake-tier {
+    width: 100%;
+    background: linear-gradient(to right, #ffb6c1 0%, #ff69b4 50%, #ffb6c1 100%);
+    border: 3px solid #ff1493;
+    border-radius: 8px;
+    margin-bottom: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.birthday-cake-tier:nth-child(1) {
+    height: 8vh;
+}
+
+.birthday-cake-tier:nth-child(2) {
+    height: 7vh;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.birthday-cake-tier:nth-child(3) {
+    height: 6vh;
+    width: 80%;
+    margin-left: 10%;
+}
+
+/* Table front edge for depth */
+.birthday-table-edge {
+    position: absolute;
+    bottom: 20%;
+    left: 20%;
+    width: 60%;
+    height: 2%;
+    background: linear-gradient(to bottom, #d0d0d0 0%, #a0a0a0 100%);
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* ============================
+   3. HALLOWEEN THEME
+   ============================ */
+
+body.theme-halloween {
+    background: linear-gradient(to bottom, #1a0033 0%, #0d001a 50%, #000000 100%);
+    position: relative;
+}
+
+/* Moon */
+.halloween-moon {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, #fffacd 0%, #ffd700 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 60px rgba(255, 255, 0, 0.6);
+    z-index: 1;
+}
+
+/* Haunted house silhouette */
+.halloween-house {
+    position: absolute;
+    right: 10%;
+    bottom: 30%;
+    width: 25%;
+    height: 35%;
+    background: #000000;
+    clip-path: polygon(50% 0%, 100% 20%, 100% 100%, 0 100%, 0 20%);
+    z-index: 5;
+}
+
+.halloween-window {
+    position: absolute;
+    width: 15%;
+    height: 20%;
+    background: #ffa500;
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.8);
+    animation: flicker 2s ease-in-out infinite;
+}
+
+.halloween-window:nth-child(1) {
+    top: 30%;
+    left: 20%;
+}
+
+.halloween-window:nth-child(2) {
+    top: 30%;
+    right: 20%;
+}
+
+.halloween-window:nth-child(3) {
+    top: 60%;
+    left: 35%;
+    width: 20%;
+    height: 25%;
+}
+
+/* Graveyard ground */
+.halloween-ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to top, #1a0d00 0%, #2d1500 100%);
+    z-index: 2;
+}
+
+/* Tombstones */
+.halloween-tombstone {
+    position: absolute;
+    bottom: 30%;
+    width: 8%;
+    height: 15%;
+    background: linear-gradient(to bottom, #4a4a4a 0%, #2a2a2a 100%);
+    border-radius: 40% 40% 0 0;
+    z-index: 6;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+}
+
+.halloween-tombstone:nth-child(1) {
+    left: 15%;
+}
+
+.halloween-tombstone:nth-child(2) {
+    left: 30%;
+    height: 12%;
+}
+
+.halloween-tombstone:nth-child(3) {
+    left: 50%;
+}
+
+.halloween-tombstone:nth-child(4) {
+    left: 70%;
+    height: 13%;
+}
+
+/* Fog overlay */
+.halloween-fog {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background: linear-gradient(to top, rgba(200, 200, 200, 0.3) 0%, transparent 100%);
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* Dry grass foreground */
+.halloween-grass {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15%;
+    background: linear-gradient(to top, rgba(50, 40, 0, 0.6) 0%, transparent 100%);
+    z-index: 21;
+    pointer-events: none;
+}
+
+/* ============================
+   4. BABY SHOWER THEME
+   ============================ */
+
+body.theme-baby {
+    background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 50%, #e0c3fc 100%);
+    position: relative;
+}
+
+/* Wall shelves */
+.baby-shelf {
+    position: absolute;
+    width: 30%;
+    height: 3%;
+    background: linear-gradient(to bottom, #8b7355 0%, #654321 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.baby-shelf:nth-child(1) {
+    top: 20%;
+    right: 10%;
+}
+
+.baby-shelf:nth-child(2) {
+    top: 40%;
+    left: 10%;
+    width: 25%;
+}
+
+/* Crib back panel */
+.baby-crib-back {
+    position: absolute;
+    bottom: 25%;
+    left: 35%;
+    width: 30%;
+    height: 30%;
+    background: linear-gradient(to bottom, #8b7355 0%, #654321 100%);
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+}
+
+.baby-crib-mattress {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    width: 90%;
+    height: 15%;
+    background: linear-gradient(to bottom, #e8f5e9 0%, #c8e6c9 100%);
+    border-radius: 5px;
+    z-index: 6;
+}
+
+/* Crib front bars - CRITICAL for depth effect */
+.baby-crib-bars {
+    position: absolute;
+    bottom: 25%;
+    left: 35%;
+    width: 30%;
+    height: 30%;
+    z-index: 30;
+    pointer-events: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 0 5%;
+}
+
+.baby-crib-bar {
+    width: 3%;
+    height: 100%;
+    background: linear-gradient(to right, #654321 0%, #8b7355 50%, #654321 100%);
+    border-radius: 5px 5px 0 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Floor rug */
+.baby-rug {
+    position: absolute;
+    bottom: 10%;
+    left: 25%;
+    width: 50%;
+    height: 15%;
+    background: radial-gradient(ellipse, #ffcdd2 0%, #f8bbd0 50%, #e1bee7 100%);
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+
+/* ============================
+   5. GRADUATION THEME
+   ============================ */
+
+body.theme-graduation {
+    background: linear-gradient(to top, #1e3c72 0%, #2a5298 40%, #87CEEB 100%);
+    position: relative;
+}
+
+/* School gate */
+.graduation-gate {
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    width: 60%;
+    height: 35%;
+    z-index: 5;
+}
+
+.graduation-gate-pillar {
+    position: absolute;
+    bottom: 0;
+    width: 15%;
+    height: 100%;
+    background: linear-gradient(to right, #6b6b6b 0%, #8b8b8b 50%, #6b6b6b 100%);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.graduation-gate-pillar:nth-child(1) {
+    left: 0;
+}
+
+.graduation-gate-pillar:nth-child(2) {
+    right: 0;
+}
+
+.graduation-gate-arch {
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    height: 25%;
+    background: linear-gradient(to bottom, #8b8b8b 0%, #6b6b6b 100%);
+    border-radius: 50% 50% 0 0;
+}
+
+/* Podium */
+.graduation-podium {
+    position: absolute;
+    bottom: 10%;
+    left: 42%;
+    width: 16%;
+    height: 20%;
+    background: linear-gradient(to bottom, #8b7355 0%, #654321 100%);
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    z-index: 8;
+}
+
+/* Ivy on pillars */
+.graduation-ivy {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    top: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(34, 139, 34, 0.3) 50%, rgba(34, 139, 34, 0.5) 100%);
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* ============================
+   6. FAREWELL / OFFICE THEME
+   ============================ */
+
+body.theme-farewell {
+    background: linear-gradient(to right, #d4a574 0%, #e6c896 50%, #d4a574 100%);
+    position: relative;
+}
+
+/* Corkboard */
+.farewell-corkboard {
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    width: 30%;
+    height: 40%;
+    background: #c19a6b;
+    border: 10px solid #654321;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.farewell-corkboard::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(0, 0, 0, 0.03) 10px, rgba(0, 0, 0, 0.03) 11px),
+        repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(0, 0, 0, 0.03) 10px, rgba(0, 0, 0, 0.03) 11px);
+}
+
+/* Desk */
+.farewell-desk {
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+    width: 35%;
+    height: 25%;
+    background: linear-gradient(to bottom, #5d4037 0%, #3e2723 100%);
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+}
+
+.farewell-computer {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    width: 30%;
+    height: 40%;
+    background: #2c2c2c;
+    border: 3px solid #1a1a1a;
+    border-radius: 3px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Suitcase */
+.farewell-suitcase {
+    position: absolute;
+    bottom: 15%;
+    right: 15%;
+    width: 25%;
+    height: 20%;
+    background: linear-gradient(to bottom, #8b6914 0%, #654321 100%);
+    border: 4px solid #4a2c0f;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    z-index: 6;
+}
+
+.farewell-suitcase::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #4a2c0f;
+}
+
+/* Suitcase front edge for depth */
+.farewell-suitcase-edge {
+    position: absolute;
+    bottom: 15%;
+    right: 15%;
+    width: 25%;
+    height: 3%;
+    background: linear-gradient(to bottom, #4a2c0f 0%, #2a1a0a 100%);
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* ============================
+   7. ROMANTIC / VALENTINE'S THEME
+   ============================ */
+
+body.theme-love {
+    background: linear-gradient(to bottom, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    position: relative;
+}
+
+/* Stars */
+.romantic-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    z-index: 1;
+}
+
+.romantic-star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    animation: flicker 3s ease-in-out infinite;
+}
+
+/* Grass field */
+.romantic-grass {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, #0a4d0a 0%, #0e6b0e 100%);
+    z-index: 2;
+}
+
+/* Picnic blanket */
+.romantic-blanket {
+    position: absolute;
+    bottom: 15%;
+    left: 25%;
+    width: 50%;
+    height: 25%;
+    background-image:
+        repeating-linear-gradient(0deg, #c41e3a 0px, #c41e3a 40px, white 40px, white 80px),
+        repeating-linear-gradient(90deg, #c41e3a 0px, #c41e3a 40px, white 40px, white 80px);
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+}
+
+/* Picnic table */
+.romantic-table {
+    position: absolute;
+    bottom: 20%;
+    left: 42%;
+    width: 16%;
+    height: 15%;
+    background: linear-gradient(to bottom, #5d4037 0%, #3e2723 100%);
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(255, 200, 0, 0.5);
+    z-index: 7;
+}
+
+.romantic-candle {
+    position: absolute;
+    top: 10%;
+    width: 15%;
+    height: 60%;
+    background: linear-gradient(to bottom, #fff8dc 0%, #f0e68c 100%);
+    border-radius: 3px;
+    box-shadow: 0 0 20px rgba(255, 200, 0, 0.8);
+    animation: sway 3s ease-in-out infinite;
+}
+
+.romantic-candle:nth-child(1) {
+    left: 20%;
+}
+
+.romantic-candle:nth-child(2) {
+    right: 20%;
+}
+
+/* Blur edges for focus */
+.romantic-blur-edges {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.5) 100%);
+    backdrop-filter: blur(0px);
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* ============================
+   8. GET WELL SOON THEME
+   ============================ */
+
+body.theme-getwell {
+    background: linear-gradient(to right, #ffecd2 0%, #fcb69f 50%, #ffd89b 100%);
+    position: relative;
+}
+
+/* Armchair */
+.getwell-chair {
+    position: absolute;
+    bottom: 20%;
+    left: 30%;
+    width: 40%;
+    height: 40%;
+    z-index: 5;
+}
+
+.getwell-chair-back {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 60%;
+    background: linear-gradient(to bottom, #8b4513 0%, #654321 100%);
+    border-radius: 40% 40% 10% 10%;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.getwell-chair-seat {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    width: 80%;
+    height: 35%;
+    background: linear-gradient(to bottom, #a0522d 0%, #8b4513 100%);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.getwell-armrest {
+    position: absolute;
+    bottom: 10%;
+    width: 15%;
+    height: 40%;
+    background: linear-gradient(to right, #8b4513 0%, #a0522d 50%, #8b4513 100%);
+    border-radius: 10px 10px 5px 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    z-index: 20;
+    pointer-events: none;
+}
+
+.getwell-armrest:nth-child(1) {
+    left: 5%;
+}
+
+.getwell-armrest:nth-child(2) {
+    right: 5%;
+}
+
+/* Blanket on chair */
+.getwell-blanket {
+    position: absolute;
+    bottom: 25%;
+    left: 35%;
+    width: 30%;
+    height: 20%;
+    background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 50%, #ffb6c1 100%);
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    z-index: 8;
+}
+
+/* Side table */
+.getwell-table {
+    position: absolute;
+    bottom: 25%;
+    right: 15%;
+    width: 15%;
+    height: 20%;
+    background: linear-gradient(to bottom, #8b7355 0%, #654321 100%);
+    border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 4;
+}
+
+/* Fireplace */
+.getwell-fireplace {
+    position: absolute;
+    bottom: 15%;
+    left: 5%;
+    width: 20%;
+    height: 30%;
+    background: linear-gradient(to bottom, #4a2c2a 0%, #2d1a1a 100%);
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 0 40px rgba(255, 100, 0, 0.3);
+    z-index: 3;
+}
+
+.getwell-fire {
+    position: absolute;
+    bottom: 5%;
+    left: 20%;
+    width: 60%;
+    height: 50%;
+    background: radial-gradient(circle, #ff6b00 0%, #ff4500 40%, #8b0000 100%);
+    border-radius: 50%;
+    animation: flicker 2s ease-in-out infinite;
+    box-shadow: 0 0 30px rgba(255, 100, 0, 0.8);
+}
+
+/* ============================
+   GIFT COMPONENTS
+   ============================ */
+
+.gift-item {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.3s, filter 0.3s;
+    z-index: 10;
+    animation: float 6s ease-in-out infinite;
+    min-width: 60px;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.gift-item:hover {
+    transform: scale(1.4) translateY(-8px);
+    z-index: 100;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .gift-item:active {
+        transform: scale(1.3) translateY(-5px);
+        z-index: 100;
+    }
+}
+
+.gift-icon {
+    font-size: 3.5rem;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6));
+    display: block;
+    text-align: center;
+    transition: transform 0.3s;
+    pointer-events: none;
+}
+
+.gift-item:hover .gift-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.gift-sender {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    margin-top: 6px;
+    white-space: nowrap;
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ============================
+   RESPONSIVE DESIGN
+   ============================ */
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+    .gift-item {
+        min-width: 55px;
+        min-height: 55px;
+    }
+
+    .gift-icon {
+        font-size: 3rem;
+    }
+
+    .gift-sender {
+        font-size: 0.72rem;
+        max-width: 110px;
+    }
+
+    /* Prevent gift overflow on tablet */
+    #gifts-layer {
+        padding: 2%;
+    }
+
+    /* Theme element scaling for tablet */
+    .christmas-tree-container {
+        width: 32%;
+    }
+
+    .birthday-cake {
+        width: 18%;
+    }
+
+    .farewell-corkboard {
+        width: 28%;
+    }
+
+    .getwell-chair {
+        width: 45%;
+    }
+
+    .romantic-blanket {
+        width: 55%;
+    }
+}
+
+@media (max-width: 768px) {
+    .gift-item {
+        min-width: 50px;
+        min-height: 50px;
+    }
+
+    .gift-icon {
+        font-size: 2.8rem;
+    }
+
+    .gift-sender {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+        max-width: 100px;
+    }
+
+    .gift-item:hover {
+        transform: scale(1.25) translateY(-5px);
+    }
+
+    /* Scale down theme elements on mobile */
+    .christmas-window {
+        width: 30%;
+        height: 30%;
+    }
+
+    .christmas-fireplace {
+        width: 35%;
+        height: 30%;
+    }
+
+    .birthday-cake {
+        width: 20%;
+    }
+
+    .halloween-moon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .baby-crib-back {
+        width: 40%;
+    }
+
+    .graduation-gate {
+        width: 70%;
+    }
+
+    .farewell-desk {
+        width: 40%;
+    }
+
+    .romantic-blanket {
+        width: 60%;
+    }
+
+    .getwell-chair {
+        width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .gift-item {
+        min-width: 45px;
+        min-height: 45px;
+    }
+
+    .gift-icon {
+        font-size: 2.2rem;
+    }
+
+    .gift-sender {
+        font-size: 0.65rem;
+        padding: 2px 6px;
+        max-width: 80px;
+    }
+
+    .gift-item:hover {
+        transform: scale(1.15) translateY(-3px);
+    }
+
+    /* Further scale adjustments for small screens */
+    .christmas-tree {
+        border-left: 15vw solid transparent;
+        border-right: 15vw solid transparent;
+    }
+
+    .birthday-cake-tier:nth-child(1) {
+        height: 6vh;
+    }
+
+    .birthday-cake-tier:nth-child(2) {
+        height: 5vh;
+    }
+
+    .birthday-cake-tier:nth-child(3) {
+        height: 4vh;
+    }
+}
+
+/* ============================
+   ENHANCED THEME STYLES V2
+   ============================ */
+
+/* New Animations */
+@keyframes balloon-float {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-25px) rotate(3deg); }
+}
+
+@keyframes cloud-drift {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200vw); }
+}
+
+@keyframes bat-fly {
+    0%, 100% { transform: translate(0, 0) scaleX(1); }
+    25% { transform: translate(30px, -20px) scaleX(-1); }
+    50% { transform: translate(60px, 0) scaleX(1); }
+    75% { transform: translate(30px, 20px) scaleX(-1); }
+}
+
+@keyframes cap-fly {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+@keyframes shooting-star {
+    0% { transform: translateX(0) translateY(0); opacity: 1; }
+    100% { transform: translateX(-200px) translateY(200px); opacity: 0; }
+}
+
+@keyframes firefly {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes heart-float {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100px) scale(1); opacity: 0; }
+}
+
+@keyframes steam {
+    0% { transform: translateY(0) scale(1); opacity: 0.6; }
+    100% { transform: translateY(-30px) scale(1.5); opacity: 0; }
+}
+
+@keyframes swing {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+@keyframes tree-light-blink {
+    0%, 100% { opacity: 1; box-shadow: 0 0 10px currentColor; }
+    50% { opacity: 0.3; box-shadow: 0 0 5px currentColor; }
+}
+
+/* ===== CHRISTMAS ENHANCED ===== */
+.christmas-room-wall {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 75%;
+    background: linear-gradient(180deg, #2d1f1a 0%, #3d2b25 100%);
+    z-index: 0;
+}
+
+.christmas-wooden-floor {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 25%;
+    background: repeating-linear-gradient(90deg, #4a3428 0px, #5d4037 20px, #4a3428 40px);
+    z-index: 0;
+}
+
+.christmas-window-snow {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 20%;
+    background: linear-gradient(to top, rgba(255,255,255,0.9), rgba(255,255,255,0.3));
+    border-radius: 0 0 5px 5px;
+}
+
+.christmas-curtain {
+    position: absolute;
+    top: -5%; width: 30%; height: 110%;
+    background: linear-gradient(to bottom, #8b0000, #a52a2a);
+    z-index: 2;
+}
+.christmas-curtain-left { left: -5%; border-radius: 0 0 50% 0; }
+.christmas-curtain-right { right: -5%; border-radius: 0 0 0 50%; }
+
+.christmas-fireplace-brick {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, #5d3a2a 0px, #5d3a2a 15px, #3d2a1a 15px, #3d2a1a 17px);
+    border-radius: 8px 8px 0 0;
+}
+
+.christmas-fire-log {
+    position: absolute;
+    bottom: 10%; left: 20%; width: 60%; height: 20%;
+    background: linear-gradient(to right, #3d2817, #5d3827, #3d2817);
+    border-radius: 50%;
+}
+
+.christmas-fire {
+    position: absolute;
+    bottom: 15%; left: 30%; width: 40%; height: 60%;
+    background: radial-gradient(ellipse at bottom, #ff6b00 0%, #ff4500 40%, transparent 70%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.5s ease-in-out infinite alternate;
+}
+.christmas-fire-2 {
+    left: 25%; width: 50%; height: 50%;
+    animation-delay: 0.25s;
+    opacity: 0.8;
+}
+
+.christmas-stocking {
+    display: inline-block;
+    width: 25%; height: 80%;
+    margin: 0 3%;
+    background: linear-gradient(to bottom, #c41e3a 0%, #8b0000 100%);
+    border-radius: 0 0 40% 50%;
+    position: relative;
+    animation: sway 3s ease-in-out infinite;
+}
+.christmas-stocking::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 25%;
+    background: white;
+    border-radius: 0 0 10px 10px;
+}
+
+.christmas-mantel {
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 15%;
+    background: linear-gradient(to bottom, #654321 0%, #3e2723 100%);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 5px;
+}
+
+.christmas-tree-container {
+    position: absolute;
+    left: 10%; bottom: 15%;
+    width: 35%; height: 55%;
+    z-index: 5;
+}
+
+.christmas-tree-trunk {
+    position: absolute;
+    bottom: 0; left: 45%; width: 10%; height: 15%;
+    background: linear-gradient(to right, #4a3020, #6b4030, #4a3020);
+    z-index: 1;
+}
+
+.christmas-tree {
+    position: absolute;
+    left: 10%; bottom: 10%;
+    width: 0; height: 0;
+    border-left: 15vw solid transparent;
+    border-right: 15vw solid transparent;
+    border-bottom: 40vh solid #155724;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+}
+
+.christmas-tree-star {
+    position: absolute;
+    top: 5%; left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    animation: pulse-glow 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px gold);
+    z-index: 10;
+}
+
+.christmas-tree-lights {
+    position: absolute;
+    left: 10%; bottom: 10%;
+    width: 30vw; height: 40vh;
+    z-index: 6;
+    pointer-events: none;
+}
+
+.christmas-light {
+    position: absolute;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    animation: tree-light-blink 1s ease-in-out infinite;
+    box-shadow: 0 0 10px currentColor;
+}
+
+.christmas-gifts {
+    position: absolute;
+    bottom: 18%; left: 15%;
+    z-index: 7;
+    display: flex;
+    gap: 10px;
+}
+
+.christmas-gift {
+    font-size: 2.5rem;
+    animation: float 4s ease-in-out infinite;
+}
+.christmas-gift-2 { animation-delay: 1s; }
+.christmas-gift-3 { animation-delay: 2s; }
+
+/* ===== BIRTHDAY ENHANCED ===== */
+.birthday-wall-pattern {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    z-index: 0;
+}
+
+.birthday-garland {
+    position: absolute;
+    top: 5%; left: 5%; right: 5%;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    z-index: 5;
+}
+
+.birthday-flag {
+    width: 40px; height: 50px;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    animation: sway 2s ease-in-out infinite;
+}
+
+.birthday-balloons { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+
+.birthday-balloon {
+    position: absolute;
+    top: 15%;
+    width: 60px; height: 75px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    animation: balloon-float 4s ease-in-out infinite;
+}
+.birthday-balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: 50%;
+    width: 2px; height: 30px;
+    background: #666;
+    transform: translateX(-50%);
+}
+
+.birthday-cake-plate {
+    position: absolute;
+    bottom: -5%; left: -10%; width: 120%; height: 8%;
+    background: linear-gradient(to bottom, #e0e0e0, #bdbdbd);
+    border-radius: 50%;
+}
+
+.birthday-candles {
+    position: absolute;
+    top: -30px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: 8px;
+    z-index: 10;
+}
+
+.birthday-candle {
+    width: 8px; height: 30px;
+    background: linear-gradient(to bottom, #ff69b4, #ff1493);
+    border-radius: 3px 3px 0 0;
+    position: relative;
+}
+
+.birthday-flame {
+    position: absolute;
+    top: -15px; left: 50%;
+    transform: translateX(-50%);
+    width: 10px; height: 15px;
+    background: radial-gradient(ellipse at bottom, #ffff00, #ff8c00, transparent);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.3s ease-in-out infinite alternate;
+}
+
+/* ===== HALLOWEEN ENHANCED ===== */
+.halloween-clouds {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.halloween-cloud {
+    position: absolute;
+    width: 150px; height: 50px;
+    background: rgba(50, 50, 50, 0.6);
+    border-radius: 50px;
+    animation: cloud-drift 60s linear infinite;
+}
+.halloween-cloud::before, .halloween-cloud::after {
+    content: '';
+    position: absolute;
+    background: rgba(50, 50, 50, 0.6);
+    border-radius: 50%;
+}
+.halloween-cloud::before { width: 60px; height: 60px; top: -30px; left: 20px; }
+.halloween-cloud::after { width: 80px; height: 80px; top: -40px; left: 50px; }
+
+.halloween-moon-crater {
+    position: absolute;
+    width: 20px; height: 20px;
+    background: rgba(200, 180, 150, 0.5);
+    border-radius: 50%;
+    top: 20%; left: 30%;
+}
+.halloween-moon-crater-2 { top: 50%; left: 60%; width: 15px; height: 15px; }
+
+.halloween-bats { position: absolute; inset: 0; z-index: 15; pointer-events: none; }
+
+.halloween-bat {
+    position: absolute;
+    font-size: 2rem;
+    animation: bat-fly 8s ease-in-out infinite;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+}
+
+.halloween-dead-tree {
+    position: absolute;
+    left: 5%; bottom: 20%;
+    width: 100px; height: 200px;
+    background: #1a0d00;
+    clip-path: polygon(45% 100%, 55% 100%, 60% 60%, 80% 40%, 70% 40%, 58% 50%, 60% 30%, 50% 0%, 40% 30%, 42% 50%, 30% 40%, 20% 40%, 40% 60%);
+    z-index: 3;
+}
+
+.halloween-house-roof {
+    position: absolute;
+    top: -30%; left: -10%; width: 120%; height: 40%;
+    background: #0a0505;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.halloween-door {
+    position: absolute;
+    bottom: 0; left: 35%; width: 30%; height: 45%;
+    background: linear-gradient(to bottom, #3d2817, #2a1a10);
+    border-radius: 50% 50% 0 0;
+}
+
+.halloween-door-knocker {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15px; height: 15px;
+    background: #8b7355;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255,165,0,0.3);
+}
+
+.halloween-fence {
+    position: absolute;
+    bottom: 25%; left: 0; right: 0;
+    height: 50px;
+    background: repeating-linear-gradient(90deg, transparent 0px, transparent 20px, #1a0d00 20px, #1a0d00 25px);
+    z-index: 4;
+}
+.halloween-fence::before {
+    content: '';
+    position: absolute;
+    top: 40%; left: 0; right: 0;
+    height: 10px;
+    background: #1a0d00;
+}
+
+.halloween-tombstone span {
+    position: absolute;
+    top: 30%; left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6rem;
+    color: #666;
+    font-weight: bold;
+}
+
+.halloween-tombstone-cross {
+    background: none !important;
+}
+.halloween-tombstone-cross::before {
+    content: '✝';
+    position: absolute;
+    font-size: 2rem;
+    color: #4a4a4a;
+    top: 20%; left: 50%;
+    transform: translateX(-50%);
+}
+
+.halloween-pumpkins {
+    position: absolute;
+    bottom: 10%; left: 10%;
+    display: flex; gap: 30px;
+    z-index: 8;
+}
+
+.halloween-pumpkin {
+    font-size: 3rem;
+    animation: float 5s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(255,165,0,0.5));
+}
+
+/* ===== BABY SHOWER ENHANCED ===== */
+.baby-sky {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 50%, #e0c3fc 100%);
+    z-index: 0;
+}
+
+.baby-cloud {
+    position: absolute;
+    width: 120px; height: 40px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50px;
+    animation: cloud-drift 40s linear infinite;
+}
+.baby-cloud::before, .baby-cloud::after {
+    content: '';
+    position: absolute;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+}
+.baby-cloud::before { width: 50px; height: 50px; top: -25px; left: 15px; }
+.baby-cloud::after { width: 60px; height: 60px; top: -30px; left: 40px; }
+
+.baby-rainbow {
+    position: absolute;
+    top: 10%; left: 50%;
+    transform: translateX(-50%);
+    width: 300px; height: 150px;
+    background: conic-gradient(from 180deg, 
+        transparent 0deg, 
+        #ff6b6b 0deg, #ff6b6b 20deg,
+        #feca57 20deg, #feca57 40deg,
+        #48dbfb 40deg, #48dbfb 60deg,
+        #1dd1a1 60deg, #1dd1a1 80deg,
+        #c780e8 80deg, #c780e8 100deg,
+        transparent 100deg
+    );
+    border-radius: 0 0 300px 300px;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.baby-wall-stars { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+
+.baby-wall-star {
+    position: absolute;
+    color: rgba(255, 215, 0, 0.6);
+    font-size: 1.5rem;
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.baby-shelf {
+    position: absolute;
+    width: 25%; height: 4%;
+    background: linear-gradient(to bottom, #d4a574, #c19a6b);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 3;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding-bottom: 5px;
+}
+.baby-shelf-1 { top: 15%; right: 8%; }
+.baby-shelf-2 { top: 35%; left: 8%; width: 20%; }
+
+.baby-shelf-toy {
+    font-size: 1.5rem;
+    animation: sway 3s ease-in-out infinite;
+}
+
+.baby-mobile {
+    position: absolute;
+    top: 5%; left: 45%;
+    width: 100px;
+    z-index: 4;
+}
+
+.baby-mobile-arm {
+    width: 80px; height: 3px;
+    background: #8b7355;
+    margin: 0 auto;
+}
+
+.baby-mobile-item {
+    position: absolute;
+    top: 20px;
+    font-size: 1.8rem;
+    animation: swing 3s ease-in-out infinite;
+}
+.baby-mobile-item-1 { left: 0; animation-delay: 0s; }
+.baby-mobile-item-2 { left: 35px; animation-delay: 0.5s; }
+.baby-mobile-item-3 { left: 70px; animation-delay: 1s; }
+
+.baby-crib-padding {
+    position: absolute;
+    top: 5%; left: 5%; right: 5%; height: 20%;
+    background: repeating-linear-gradient(90deg, #fff8e1 0px, #fff8e1 20px, #ffe0b2 20px, #ffe0b2 40px);
+    border-radius: 5px;
+}
+
+.baby-crib-pillow {
+    position: absolute;
+    bottom: 35%; left: 10%; width: 30%; height: 15%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.baby-crib-blanket {
+    position: absolute;
+    bottom: 8%; left: 5%; right: 5%; height: 30%;
+    background: linear-gradient(135deg, #ffcdd2 0%, #f8bbd0 50%, #e1bee7 100%);
+    border-radius: 5px;
+}
+
+.baby-floor-toys {
+    position: absolute;
+    bottom: 8%; left: 20%;
+    display: flex; gap: 30px;
+    z-index: 4;
+}
+
+.baby-floor-toy {
+    font-size: 2.5rem;
+    animation: float 5s ease-in-out infinite;
+}
+
+/* ===== GRADUATION ENHANCED ===== */
+.graduation-sky {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #1e3c72 0%, #2a5298 40%, #87CEEB 100%);
+    z-index: 0;
+}
+
+.graduation-cloud {
+    position: absolute;
+    width: 100px; height: 35px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 40px;
+    animation: cloud-drift 50s linear infinite;
+}
+
+.graduation-caps { position: absolute; inset: 0; z-index: 6; pointer-events: none; }
+
+.graduation-cap {
+    position: absolute;
+    bottom: 0;
+    font-size: 2rem;
+    animation: cap-fly 8s ease-out infinite;
+}
+
+.graduation-confetti { position: absolute; inset: 0; z-index: 7; pointer-events: none; }
+
+.graduation-confetti-piece {
+    position: absolute;
+    width: 10px; height: 10px;
+    animation: confetti-fall 6s linear infinite;
+}
+
+.graduation-building {
+    position: absolute;
+    bottom: 30%; left: 15%; right: 15%;
+    height: 40%;
+    background: linear-gradient(to bottom, #8b8b8b 0%, #6b6b6b 100%);
+    z-index: 2;
+}
+.graduation-building::before {
+    content: '';
+    position: absolute;
+    top: -15%; left: 35%; width: 30%; height: 20%;
+    background: #7b7b7b;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.graduation-lawn {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 15%;
+    background: linear-gradient(to top, #2d5016 0%, #4caf50 100%);
+    z-index: 3;
+}
+
+.graduation-pillar-top {
+    position: absolute;
+    top: -10px; left: -10%; width: 120%;
+    height: 20px;
+    background: #9b9b9b;
+    border-radius: 3px;
+}
+
+.graduation-arch-text {
+    position: absolute;
+    bottom: 20%; left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #ffd700;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.graduation-podium-front {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, #8b7355 0%, #654321 100%);
+    clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+}
+
+.graduation-microphone {
+    position: absolute;
+    top: -20%; left: 50%;
+    transform: translateX(-50%);
+    width: 8px; height: 30px;
+    background: #333;
+    border-radius: 3px;
+}
+.graduation-microphone::before {
+    content: '';
+    position: absolute;
+    top: -15px; left: -6px;
+    width: 20px; height: 20px;
+    background: #444;
+    border-radius: 50%;
+}
+
+.graduation-emblem {
+    position: absolute;
+    top: 30%; left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+}
+
+/* ===== FAREWELL ENHANCED ===== */
+.farewell-wall {
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 70%;
+    background: linear-gradient(to right, #e8ddd0 0%, #f5efe6 50%, #e8ddd0 100%);
+    z-index: 0;
+}
+
+.farewell-floor {
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 30%;
+    background: linear-gradient(to bottom, #8b7355 0%, #6b5344 100%);
+    z-index: 0;
+}
+
+.farewell-window {
+    position: absolute;
+    top: 10%; left: 8%;
+    width: 20%; height: 35%;
+    background: linear-gradient(to bottom, #87ceeb 0%, #b0e0e6 100%);
+    border: 8px solid #5d4037;
+    z-index: 1;
+}
+
+.farewell-blinds {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent 0px, transparent 15px, rgba(255,255,255,0.5) 15px, rgba(255,255,255,0.5) 17px);
+}
+
+.farewell-window-light {
+    position: absolute;
+    bottom: -50%; left: 50%;
+    width: 200%; height: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,200,0.2), transparent);
+    transform: translateX(-50%) skewX(-20deg);
+    z-index: 0;
+}
+
+.farewell-postit {
+    position: absolute;
+    width: 40px; height: 40px;
+    background: #fff9c4;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    transform: rotate(-5deg);
+}
+.farewell-postit-1 { top: 15%; left: 10%; }
+.farewell-postit-2 { top: 25%; right: 15%; transform: rotate(8deg); background: #ffccbc; }
+.farewell-postit-3 { bottom: 20%; left: 20%; transform: rotate(-3deg); background: #b3e5fc; }
+
+.farewell-photo {
+    position: absolute;
+    width: 50px; height: 40px;
+    background: white;
+    border: 3px solid white;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+.farewell-photo::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+.farewell-photo { top: 40%; left: 40%; transform: rotate(5deg); }
+.farewell-photo-2 { top: 55%; right: 20%; transform: rotate(-8deg); }
+
+.farewell-screen {
+    position: absolute;
+    top: 5%; left: 10%; right: 10%;
+    height: 60%;
+    background: linear-gradient(135deg, #1e3a5f 0%, #2a5298 100%);
+    border-radius: 3px;
+}
+
+.farewell-keyboard {
+    position: absolute;
+    bottom: 5%; left: 15%; right: 15%;
+    height: 15%;
+    background: #333;
+    border-radius: 2px;
+}
+
+.farewell-mug, .farewell-plant {
+    position: absolute;
+    font-size: 1.8rem;
+}
+.farewell-mug { top: 20%; right: 10%; }
+.farewell-plant { top: 15%; left: 5%; }
+
+.farewell-papers {
+    position: absolute;
+    bottom: 30%; left: 20%;
+    width: 40px; height: 50px;
+    background: white;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    transform: rotate(5deg);
+}
+
+.farewell-boxes {
+    position: absolute;
+    bottom: 15%; right: 25%;
+    z-index: 4;
+}
+
+.farewell-box {
+    font-size: 3rem;
+    position: absolute;
+}
+.farewell-box-1 { bottom: 0; left: 0; }
+.farewell-box-2 { bottom: 40px; left: 30px; }
+
+.farewell-suitcase {
+    position: absolute;
+    bottom: 10%; right: 10%;
+    width: 22%; height: 18%;
+    background: linear-gradient(to bottom, #8b6508 0%, #654321 100%);
+    border-radius: 8px;
+    z-index: 5;
+}
+
+.farewell-suitcase-handle {
+    position: absolute;
+    top: -15px; left: 50%;
+    transform: translateX(-50%);
+    width: 30%; height: 15px;
+    background: #4a3020;
+    border-radius: 10px 10px 0 0;
+}
+
+.farewell-suitcase-stripe {
+    position: absolute;
+    top: 45%; left: 0; right: 0;
+    height: 10%;
+    background: #4a3020;
+}
+
+.farewell-suitcase-tag {
+    position: absolute;
+    top: 20%; right: 10%;
+    font-size: 1.2rem;
+    animation: sway 2s ease-in-out infinite;
+}
+
+/* ===== ROMANTIC ENHANCED ===== */
+.romantic-shooting-stars { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+
+.romantic-shooting-star {
+    position: absolute;
+    width: 100px; height: 2px;
+    background: linear-gradient(to left, white, transparent);
+    animation: shooting-star 4s ease-out infinite;
+}
+
+.romantic-moon {
+    position: absolute;
+    top: 10%; right: 15%;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle at 30% 30%, #fffacd, #ffefd5);
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(255, 250, 205, 0.5);
+    z-index: 1;
+}
+
+.romantic-fireflies { position: absolute; inset: 0; z-index: 8; pointer-events: none; }
+
+.romantic-firefly {
+    position: absolute;
+    width: 6px; height: 6px;
+    background: #ffff00;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00;
+    animation: firefly 4s ease-in-out infinite;
+}
+
+.romantic-flower {
+    position: absolute;
+    bottom: 5%;
+    font-size: 1.5rem;
+    animation: sway 3s ease-in-out infinite;
+}
+
+.romantic-blanket-pattern {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent 0px, transparent 20px, rgba(255,255,255,0.1) 20px, rgba(255,255,255,0.1) 40px);
+}
+
+.romantic-basket {
+    position: absolute;
+    bottom: 22%; left: 18%;
+    font-size: 2.5rem;
+    z-index: 6;
+}
+
+.romantic-flame {
+    position: absolute;
+    top: -20px; left: 50%;
+    transform: translateX(-50%);
+    width: 12px; height: 20px;
+    background: radial-gradient(ellipse at bottom, #ffff00, #ff8c00, transparent);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.3s ease-in-out infinite alternate;
+    box-shadow: 0 0 15px rgba(255, 200, 0, 0.8);
+}
+
+.romantic-candle {
+    position: relative;
+    width: 15px; height: 40px;
+    background: linear-gradient(to bottom, #fff8dc, #f5deb3);
+    border-radius: 3px;
+}
+
+.romantic-roses, .romantic-wine {
+    font-size: 1.5rem;
+}
+
+.romantic-hearts { position: absolute; inset: 0; z-index: 9; pointer-events: none; }
+
+.romantic-heart {
+    position: absolute;
+    bottom: 0;
+    font-size: 1.2rem;
+    animation: heart-float 10s ease-out infinite;
+    opacity: 0.7;
+}
+
+/* ===== GETWELL ENHANCED ===== */
+.getwell-wall {
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 65%;
+    background: linear-gradient(to right, #ffecd2 0%, #fff5eb 50%, #ffecd2 100%);
+    z-index: 0;
+}
+
+.getwell-floor {
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 35%;
+    background: linear-gradient(to bottom, #d4a574 0%, #c19a6b 100%);
+    z-index: 0;
+}
+
+.getwell-window {
+    position: absolute;
+    top: 8%; right: 8%;
+    width: 18%; height: 30%;
+    background: linear-gradient(to bottom, #87ceeb, #fff9c4);
+    border: 6px solid white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+.getwell-curtain {
+    position: absolute;
+    top: -5%; width: 35%; height: 110%;
+    background: linear-gradient(to bottom, #f8bbd0, #f48fb1);
+    z-index: 2;
+}
+.getwell-curtain-left { left: -10%; border-radius: 0 0 30% 0; }
+.getwell-curtain-right { right: -10%; border-radius: 0 0 0 30%; }
+
+.getwell-sunrays {
+    position: absolute;
+    bottom: 0; left: 20%; right: 20%;
+    height: 200%;
+    background: linear-gradient(to bottom, rgba(255, 255, 200, 0.3), transparent);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+}
+
+.getwell-frames {
+    position: absolute;
+    top: 15%; left: 30%;
+    display: flex; gap: 40px;
+    z-index: 2;
+}
+
+.getwell-frame {
+    font-size: 2rem;
+    background: white;
+    padding: 10px;
+    border: 5px solid #8b7355;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+}
+
+.getwell-fireplace-mantel {
+    position: absolute;
+    top: -8%; left: -10%; width: 120%; height: 12%;
+    background: linear-gradient(to bottom, #8b7355, #654321);
+    z-index: 10;
+}
+
+.getwell-flame {
+    position: absolute;
+    bottom: 20%; left: 25%;
+    width: 25%; height: 50%;
+    background: radial-gradient(ellipse at bottom, #ff6b00, #ff4500, transparent);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.5s ease-in-out infinite alternate;
+}
+.getwell-flame-2 { left: 45%; width: 20%; height: 40%; animation-delay: 0.25s; }
+
+.getwell-fireplace-glow {
+    position: absolute;
+    bottom: 0; left: -50%; width: 200%; height: 50%;
+    background: radial-gradient(ellipse at center, rgba(255, 100, 0, 0.3), transparent 70%);
+    z-index: -1;
+}
+
+.getwell-side-table {
+    position: absolute;
+    bottom: 28%; right: 12%;
+    width: 12%; height: 18%;
+    background: linear-gradient(to bottom, #8b7355, #654321);
+    border-radius: 5px;
+    z-index: 4;
+}
+
+.getwell-lamp { position: absolute; top: -30px; left: 20%; font-size: 1.5rem; animation: pulse-glow 2s ease-in-out infinite; }
+.getwell-tea { position: absolute; top: -25px; right: 20%; font-size: 1.3rem; }
+
+.getwell-tea-steam {
+    position: absolute;
+    top: -45px; right: 25%;
+    width: 20px; height: 25px;
+    background: radial-gradient(ellipse at bottom, rgba(255,255,255,0.5), transparent);
+    animation: steam 2s ease-out infinite;
+}
+
+.getwell-books {
+    position: absolute;
+    bottom: 35%; left: 8%;
+    font-size: 2.5rem;
+    z-index: 4;
+}
+
+.getwell-cushion {
+    position: absolute;
+    top: 20%; left: 20%; right: 20%; bottom: 30%;
+    background: linear-gradient(135deg, #e1bee7, #ce93d8);
+    border-radius: 10px;
+}
+
+.getwell-armrest-left { left: 0 !important; }
+.getwell-armrest-right { right: 0 !important; left: auto !important; }
+
+.getwell-blanket-fold {
+    position: absolute;
+    top: 30%; left: 20%; width: 60%; height: 15%;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+}
+
+.getwell-slippers {
+    position: absolute;
+    bottom: 8%; left: 45%;
+    font-size: 1.5rem;
+    z-index: 5;
+}
+
+.getwell-flowers {
+    position: absolute;
+    bottom: 25%; left: 25%;
+    z-index: 4;
+}
+
+.getwell-vase {
+    width: 40px; height: 50px;
+    background: linear-gradient(to bottom, #90caf9, #64b5f6);
+    border-radius: 0 0 50% 50%;
+    margin: 0 auto;
+}
+
+.getwell-flower-stems {
+    font-size: 1.5rem;
+    display: block;
+    margin-top: -20px;
+    animation: sway 3s ease-in-out infinite;
+}
